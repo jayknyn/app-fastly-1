@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "^0.55.2",
+    "react-native-countdown-circle": "^3.0.0",
     "react-native-stopwatch-timer": "0.0.20"
   },
   "devDependencies": {

@@ -32,9 +32,7 @@ export default class App extends Component {
   resetTimer() {
     this.setState({
       isTimerStart: false,
-      resetTimer: true,
-      isStopwatchStart: false,
-      resetStopwatch: true
+      resetTimer: true
     })
   }
 
@@ -76,29 +74,34 @@ export default class App extends Component {
         </View>
         <View style={{flex:1, marginTop:0, alignItems:'center', justifyContent:'center'}}>
           <Text style={{fontSize: 20}}>Enter your fasting target in hours</Text>
-          <TextInput
-            style={{height:60, width:50, fontSize: 30, borderColor: 'gray', borderWidth: 1}}
-            onChangeText={(e) => this.handleTargetInput(e)}
-          />
-          <Button
-            onPress={this.startStopTimer}
-            title={!this.state.isTimerStart ? "START FASTING" : "STOP"}
-            color="#ff0000"
-          />
-          
-
-        </View>
-        <View style={{flex:1, marginTop:0, alignItems:'center', justifyContent:'center'}}>
-          <Button
-            onPress={this.resetTimer}
-            title="RESET"
-            color="#ff0000"
-          />
+            <TextInput
+              style={{height:60, width:50, fontSize: 30, borderColor: 'gray', borderWidth: 1}}
+              onChangeText={(e) => this.handleTargetInput(e)}
+            />
+            <Button
+              onPress={this.startStopTimer}
+              title={!this.state.isTimerStart ? "START FASTING" : "STOP"}
+              color="#ff0000"
+            />
         </View>
 
-
         <View style={{flex:1, marginTop:0, alignItems:'center', justifyContent:'center'}}>
-          <Text style={{fontSize: 20}}>Fasting Time Left:</Text>
+          <Stopwatch laps 
+            start={this.state.isStopwatchStart}
+            reset={this.state.resetStopwatch}
+            options={options}
+            getTime={this.getFormattedTime}
+          />
+          <TouchableHighlight onPress={this.startStopStopWatch}>
+            <Text style={{fontSize: 20, marginTop: 10}}>
+              {!this.state.isStopwatchStart ? "START FASTING" : "STOP"}
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.resetStopwatch}>
+            <Text style={{fontSize: 20, marginTop: 10}}>RESET</Text>
+          </TouchableHighlight>
+        </View>
+        <View style={{flex:1, marginTop:0, alignItems:'center', justifyContent:'center'}}>
           <Timer
             totalDuration={this.state.target} 
             start={this.state.isTimerStart}
@@ -107,15 +110,14 @@ export default class App extends Component {
             handleFinish={handleTimerComplete}
             getTime={this.getFormattedTime}
           />
-        </View>
-        <View style={{flex:1, marginTop:0, alignItems:'center', justifyContent:'center'}}>
-          <Text style={{fontSize: 20}}>You've fasted for (hh:mm:ss):</Text>
-          <Stopwatch laps 
-            start={this.state.isStopwatchStart}
-            reset={this.state.resetStopwatch}
-            options={options}
-            getTime={this.getFormattedTime}
-          />
+          <TouchableHighlight onPress={this.startStopTimer}>
+            <Text style={{fontSize:20, marginTop:10}}>
+              {!this.state.isTimerStart ? "START" : "STOP"}
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.resetTimer}>
+            <Text style={{fontSize:20, marginTop:10}}>RESET</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
