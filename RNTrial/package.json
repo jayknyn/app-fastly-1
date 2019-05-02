@@ -9,16 +9,13 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "^0.55.2",
-    "react-native-elements": "^0.18.5",
-    "react-native-vector-icons": "^4.4.2",
-    "react-native-stopwatch-timer": "0.0.20",
-    "react-navigation": "^3.9.1"
+    "react-native-countdown-circle": "^3.0.0",
+    "react-native-stopwatch-timer": "0.0.20"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/runtime": "^7.4.4",
     "babel-jest": "^24.7.1",
-    "babel-preset-react-native": "4.0.0",
     "jest": "^24.7.1",
     "metro-react-native-babel-preset": "^0.53.1",
     "react-test-renderer": "16.8.3"
