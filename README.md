@@ -1,1 +1,1 @@
-# app-fastly-1
+# Phast.ly React Native App
